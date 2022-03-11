@@ -1,6 +1,7 @@
 import express from 'express';
 import Mongoose from 'mongoose';
 import { PORT, databaseURL } from './config.js'
+import routes from './routes/index.js';
 
 const app = express()
 
@@ -12,6 +13,9 @@ app.get(
         res.json('Server running peacefully on port ' + PORT + ' ...');
     }
 );
+
+// Init Routes
+routes('/api', app);
 
 Mongoose
     .connect(databaseURL + '/easy-do')
