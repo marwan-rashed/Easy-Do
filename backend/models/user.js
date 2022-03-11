@@ -4,6 +4,7 @@ const userSchema = new Mongoose.Schema({
     uid: {
         type: String,
         required: true,
+        unique: true,
     },
     firstName: {
         type: String,
@@ -20,10 +21,12 @@ const userSchema = new Mongoose.Schema({
     email: {
         type: String,
         required: true,
+        unique: true,
     },
     phone: {
         type: String,
         required: false,
+        unique: true,
     },
     password: {
         type: String,
