@@ -45,8 +45,10 @@ export default class AuthController {
 
         User
             .findOne({ email })
+            .select('password uid -_id')
             .then(async(result) => {
-                const valid = await bcrypt.compare(result.password, password);
+                console.log(result);
+                const valid = await bcrypt.compare(password, result.password);
                 if(valid) {
                     const token = jwt.sign({ uid: result.uid }, jwtPrivateKey);
                     res.status(200).json({
